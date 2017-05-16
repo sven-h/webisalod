@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="XHTML+RDFa 1.0" xml:lang="en"> 
+<?vsp
+    declare res_uri, res_uri_encoded, _S, _LABEL, _PREMOD, _HEAD, _POSTMOD, _BROADER, _SAMEAS, _CONFIDENCE, label, query, rdf_link any;
+    res_uri := get_keyword('res', params, 'no value');
+    res_uri_encoded := split_and_decode(res_uri)[0];
+    _S := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE (res_uri);
+    _LABEL := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://www.w3.org/2000/01/rdf-schema#label');
+    _PREMOD := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://webisa.webdatacommons.org/ontology#hasPreModifier');
+    _HEAD := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://webisa.webdatacommons.org/ontology#hasHead');    
+    _POSTMOD := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://webisa.webdatacommons.org/ontology#hasPostModifier');
+    _CONFIDENCE := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://webisa.webdatacommons.org/ontology#hasConfidence');
+    _BROADER := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://www.w3.org/2004/02/skos/core#broader');
+    _SAMEAS := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE ('http://www.w3.org/2002/07/owl#sameAs');
+    
+    for (select top 1 O as _object from DB.DBA.RDF_QUAD where S = _S and P = _LABEL) do{                        
+        label := get_string_representation_of_object(_object);
+    }
+       
+    --rdf_link := sprintf('/sparql?query=DESCRIBE+<%s>', res_uri); 
+    
+    query := sprintf('CONSTRUCT{graph ?g{<%s> ?pOut ?o.?s ?pIn <%s>.}}WHERE{graph ?g{optional{<%s> ?pOut ?o.}optional{?s ?pIn <%s>.}}}', res_uri, res_uri, res_uri, res_uri); 
+    rdf_link := sprintf('DESCRIBE <%s>',res_uri);
+    
+?>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebIsALOD: <?vsp http(label); ?></title>
+    <!--link rel="icon" href=".ico"-->
+    <link href="/webisalod_statics/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{padding-top:25px;}
+    </style>
+</head>
+
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+	<div class="navbar-header">
+	    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#webisa-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand" href="/" title="About Web is a DB" style="color: #2c5078">
+            <img class="img-responsive" src="/webisalod_statics/images/icon.png" alt="About Web is a LOD" style="display: inline-block;  margin-top: -12px"/>
+	    </a>
+	</div>
+
+	<div class="collapse navbar-collapse" id="webisa-navbar">
+	    <ul class="nav navbar-nav navbar-right">
+            <li><a class="active" href="/fct/" title="Switch to /fct endpoint"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Faceted Browser </a></li>
+            <li><a class="active" href="/sparql/" title="Switch to /sparql endpoint"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Sparql Endpoint </a></li>
+	    </ul>
+	    <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Browse using <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><a href="/describe/?uri=<?=charset_recode (res_uri, 'UTF-8', '_WIDE_')?>">OpenLink Faceted Browser</a></li>
+                <li><a href="http://linkeddata.uriburner.com/rdf-editor/#/editor?uri=<?=charset_recode (res_uri, 'UTF-8', '_WIDE_')?>&amp;view=statements">OpenLink Structured Data Editor</a></li>
+                <li><a href="http://en.lodlive.it/?<?=charset_recode (res_uri, 'UTF-8', '_WIDE_')?>">LodLive Browser</a></li>
+                <li><a href="http://lodmilla.sztaki.hu/lodmilla/?url=<?=charset_recode (res_uri, 'UTF-8', '_WIDE_')?>">LODmilla Browser</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Formats <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li>&nbsp;RDF (Quad):</li>
+                    <li><a href="/nquad?res=<?vsp http_url(res_uri);?>">N-Quads</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(query);?>&format=application%2Fx-trig">TriG</a></li>
+                    <li><a href="/csvquad?res=<?vsp http_url(res_uri);?>">CSV</a></li>
+                <li class="divider"></li>
+                <li>&nbsp;RDF (Triple):</li>                
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=text%2Fplain">N-Triples</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=text%2Fturtle">N3/Turtle</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=application%2Fx-json%2Bld">JSON</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=application%2Frdf%2Bxml">XML</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=text%2Fcsv">CSV</a></li>
+                <li class="divider"></li>
+                <li>&nbsp;OData:</li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=application%2Fatom%2Bxml">Atom</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=application%2Fodata%2Bjson">JSON</a></li>
+                <li class="divider"></li>
+                <li>&nbsp;Microdata:</li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=application%2Fmicrodata%2Bjson">JSON</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=text%2Fhtml">HTML</a></li>
+                <li class="divider"></li>
+                <li>&nbsp;Embedded:</li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=text%2Fx-html-script-ld%2Bjson">JSON</a></li>
+                    <li><a href="/sparql?query=<?vsp http_url(rdf_link);?>&format=text%2Fx-html-script-turtle">Turtle</a></li>
+            </li>
+	    </ul>
+	</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <h1 id="title">About: <?vsp http(sprintf('<a href="%s">%s</a>', res_uri, label));?></h1>
+    </div>
+    <div class="row">        
+        <div class="col-xs-12">
+            <p class="lead">
+                <?vsp
+                for (select top 1 O as _object from DB.DBA.RDF_QUAD where S = _S and P = _PREMOD) do{                        
+                    http(sprintf('Premod: %s</br>', get_string_representation_of_object(_object)));
+                }                    
+                for (select top 1 O as _object from DB.DBA.RDF_QUAD where S = _S and P = _HEAD) do{                        
+                    http(sprintf('Head: %s</br>', get_string_representation_of_object(_object)));
+                }
+                for (select top 1 O as _object from DB.DBA.RDF_QUAD where S = _S and P = _POSTMOD) do{                        
+                    http(sprintf('Postmod: %s</br>', get_string_representation_of_object(_object)));
+                }
+                ?>
+            </p>
+        </div>
+        <div class="col-xs-12">
+            <table class="description table table-striped">
+                <tr><th class="col-xs-3">broader concepts</th><th class="col-xs-9">provenance</th></tr>
+                <?vsp
+                for (select first_quad.O as _object, first_quad.G as _graph from DB.DBA.RDF_QUAD AS first_quad INNER JOIN DB.DBA.RDF_QUAD AS second_quad ON first_quad.G = second_quad.S  where first_quad.S = _S and first_quad.P = _BROADER and second_quad.P = _CONFIDENCE ORDER BY second_quad.O DESC) do{
+                    for (select top 1 O as _object_label from DB.DBA.RDF_QUAD where S = _object and P = _LABEL) do{                        
+                        http(sprintf('<tr><td class="col-xs-3"><a href="%s">%s</a></td><td class="col-xs-9"><a href="%s">%s</a></td></tr>',get_string_representation_of_object(_object), get_string_representation_of_object(_object_label), get_string_representation_of_object(_graph), get_string_representation_of_object(_graph)));
+                    }      
+                }
+                ?>
+            </table>            
+            <table class="description table table-striped">
+                <tr><th class="col-xs-3">narrower concepts</th><th class="col-xs-9">provenance</th></tr>
+                <?vsp
+                for (select first_quad.S as _subject, first_quad.G as _graph from DB.DBA.RDF_QUAD AS first_quad INNER JOIN DB.DBA.RDF_QUAD AS second_quad ON first_quad.G = second_quad.S  where first_quad.O = _S and first_quad.P = _BROADER and second_quad.P = _CONFIDENCE ORDER BY second_quad.O DESC) do{
+                        for (select top 1 O as _subject_label from DB.DBA.RDF_QUAD where S = _subject and P = _LABEL) do{                        
+                             http(sprintf('<tr><td class="col-xs-3"><a href="%s">%s</a></td><td class="col-xs-9"><a href="%s">%s</a></td></tr>',get_string_representation_of_object(_subject), get_string_representation_of_object(_subject_label), get_string_representation_of_object(_graph), get_string_representation_of_object(_graph)));
+                        }  
+                    }
+                ?>
+            </table>
+            <table class="description table table-striped">
+                <tr><th class="col-xs-12">Same concepts</th></tr>
+                <?vsp
+                for (select O as _object from DB.DBA.RDF_QUAD where S = _S and P = _SAMEAS) do{
+                    http(sprintf('<tr><td class="col-xs-12"><a href="%s">%s</a></td></tr>',get_string_representation_of_object(_object), get_string_representation_of_object(_object)));
+                }
+                ?>
+            </table>
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/webisalod_statics/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/webisalod_statics/js/bootstrap.min.js"></script>
+</body>
+</html>

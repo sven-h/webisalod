@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE sticker SYSTEM "vad_sticker.dtd">
+<sticker version="1.0.010505A" xml:lang="en-UK">
+    <caption>
+        <name package="webisalod">
+            <prop name="Title" value="webisalod"/>
+            <prop name="Developer" value="OpenLink Software"/>
+            <prop name="Copyright" value="(C) 1998-2017 OpenLink Software"/>
+            <prop name="Download" value="http://www.openlinksw.com/virtuoso"/>
+        </name>
+        <version package="1.0.0">
+            <prop name="Release Date" value="2017-05-01 09:00"/>
+            <prop name="Build" value="Release, optimized"/>
+        </version>
+    </caption>
+    <dependencies></dependencies>
+    <procedures uninstallation="prohibited"></procedures>
+    <ddls>
+        <sql purpose="post-install">
+            <![CDATA[
+            set_qualifier ('DB');
+            registry_set('_webisalod_path_', '/DAV/VAD/webisalod/');
+            registry_set('_webisalod_dav_', '1');
+            DB.DBA.VAD_LOAD_SQL_FILE('/DAV/VAD/webisalod/install.sql', 0, 'report', 1);
+            ]]>
+        </sql>
+    </ddls>
+    <resources>
+        <file type="dav" source="code" target_uri="webisalod/install.sql" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        
+        <file type="dav" source="http" target_uri="webisalod/concept_desc.vsp" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/triple_desc.vsp" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/csvquad.vsp" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/nquad.vsp" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/index.html" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/js/bootstrap.min.js" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/js/jquery.min.js" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/images/icon.png" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/fonts/glyphicons-halflings-regular.eot" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/fonts/glyphicons-halflings-regular.svg" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/fonts/glyphicons-halflings-regular.ttf" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/fonts/glyphicons-halflings-regular.woff" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/fonts/glyphicons-halflings-regular.woff2" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        
+        <file type="dav" source="http" target_uri="webisalod/webisalod_statics/css/bootstrap.min.css" dav_owner="dav" dav_grp="administrators" dav_perm="111101101NN" makepath="yes"/>
+        
+        
+    </resources>
+    <registry></registry>
+</sticker>

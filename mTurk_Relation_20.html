@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel</title>
+  </head>
+  <body>
+
+
+
+<form name="mturk_form" method="post" id="mturk_form" action="http://localhost:8000/">
+
+
+
+<!-- HIT template: Survey-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="Survey"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Survey Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="panel-body" id="instructionBody">
+<p>Hello, <br/>
+thank you for participating in our survey.<br/>
+Your task is the following:<br/>
+You will get sentences in the form "paris is a city" and have to check if it is 
+<ul>
+    <li>correct</li>
+    <li>incorrect</li>
+    <li>or you are uncertain</li>
+</ul>
+All in all there are 20 relations below and you should need approximately 5 minutes (20 minutes max).<br/>
+For answering fastly, you can also use the keyboard: just press
+<ul>
+    <li>"a" for yes (correct)</li>
+    <li>"s" for uncertain (not sure)</li>
+    <li>"d" for no (incorrect)</li>
+</ul>
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- End Instructions --><!-- Survey Layout -->
+<!--You can also solve this online (<a href="mailto:?subject=Link for survey&body=http://www.geocities.com/wowhtml/">send a mail to yourself with the corresponding link</a>)-->
+<div class="row" id="workContent">
+<div class="col-sm-8 col-sm-offset-2">
+<div class="panel panel-default">
+<div class="panel-body">
+
+<table class="table" id="surveytable">
+    <thead> <tr><th style="text-align: left;">X is a Y?</th><th>Yes</th><th>Uncertain</th><th>No</th></tr></thead>
+    <tbody>
+        <tr class="selectedRow"><td style="text-align: left;">${r_0}</td><td><input type="radio" name="${id_0}" value="yes" required="required"/></td><td><input type="radio" name="${id_0}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_0}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_1}</td><td><input type="radio" name="${id_1}" value="yes" required="required"/></td><td><input type="radio" name="${id_1}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_1}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_2}</td><td><input type="radio" name="${id_2}" value="yes" required="required"/></td><td><input type="radio" name="${id_2}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_2}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_3}</td><td><input type="radio" name="${id_3}" value="yes" required="required"/></td><td><input type="radio" name="${id_3}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_3}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_4}</td><td><input type="radio" name="${id_4}" value="yes" required="required"/></td><td><input type="radio" name="${id_4}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_4}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_5}</td><td><input type="radio" name="${id_5}" value="yes" required="required"/></td><td><input type="radio" name="${id_5}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_5}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_6}</td><td><input type="radio" name="${id_6}" value="yes" required="required"/></td><td><input type="radio" name="${id_6}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_6}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_7}</td><td><input type="radio" name="${id_7}" value="yes" required="required"/></td><td><input type="radio" name="${id_7}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_7}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_8}</td><td><input type="radio" name="${id_8}" value="yes" required="required"/></td><td><input type="radio" name="${id_8}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_8}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_9}</td><td><input type="radio" name="${id_9}" value="yes" required="required"/></td><td><input type="radio" name="${id_9}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_9}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_10}</td><td><input type="radio" name="${id_10}" value="yes" required="required"/></td><td><input type="radio" name="${id_10}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_10}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_11}</td><td><input type="radio" name="${id_11}" value="yes" required="required"/></td><td><input type="radio" name="${id_11}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_11}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_12}</td><td><input type="radio" name="${id_12}" value="yes" required="required"/></td><td><input type="radio" name="${id_12}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_12}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_13}</td><td><input type="radio" name="${id_13}" value="yes" required="required"/></td><td><input type="radio" name="${id_13}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_13}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_14}</td><td><input type="radio" name="${id_14}" value="yes" required="required"/></td><td><input type="radio" name="${id_14}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_14}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_15}</td><td><input type="radio" name="${id_15}" value="yes" required="required"/></td><td><input type="radio" name="${id_15}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_15}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_16}</td><td><input type="radio" name="${id_16}" value="yes" required="required"/></td><td><input type="radio" name="${id_16}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_16}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_17}</td><td><input type="radio" name="${id_17}" value="yes" required="required"/></td><td><input type="radio" name="${id_17}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_17}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_18}</td><td><input type="radio" name="${id_18}" value="yes" required="required"/></td><td><input type="radio" name="${id_18}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_18}" value="no" required="required"/></td></tr>
+        <tr><td style="text-align: left;">${r_19}</td><td><input type="radio" name="${id_19}" value="yes" required="required"/></td><td><input type="radio" name="${id_19}" value="uncertain" required="required"/></td><td><input type="radio" name="${id_19}" value="no" required="required"/></td></tr>
+    </tbody>
+</table>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- End Survey Layout --></section>
+<!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">
+#collapseTrigger{
+  color:#fff;
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+.image{
+  margin-bottom: 15px; 
+}
+#surveytable tr.selectedRow{
+    background-color: #efefef;
+}
+#surveytable td{
+    text-align: center;
+}
+#surveytable th{
+    text-align: center;
+}
+</style>
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script><!-- Open internal javascript --><script>
+ 
+  function activateRadioBtnAndNextRow(radioValue){
+    //console.log("a pressed");
+    var currentSelectedRow = $("#surveytable tr.selectedRow");
+    var futureSelectedRow = currentSelectedRow.next();
+    currentSelectedRow.find(":radio[value="+radioValue+"]").prop("checked", true); 
+
+    if(futureSelectedRow.is("tr")){
+        //scroll if neccessary
+        //if($(window).height() - (futureSelectedRow.offset().top - $(window).scrollTop()) < 40){
+        //    $('html, body').animate({ scrollTop: (futureSelectedRow.offset().top)}, 'slow');
+        //}
+    
+        currentSelectedRow.removeClass("selectedRow");
+        
+        futureSelectedRow.addClass("selectedRow");
+        futureSelectedRow.find("input:checked").focus();
+    }
+  }
+ 
+  $(document).ready(function() {
+    // Instructions expand/collapse
+    var content = $('#instructionBody');
+    var trigger = $('#collapseTrigger');
+    content.hide();
+    $('.collapse-text').text('(Click to expand)');
+    trigger.click(function(){
+      content.toggle();
+      var isVisible = content.is(':visible');
+      if(isVisible){
+        $('.collapse-text').text('(Click to collapse)');
+      }else{
+        $('.collapse-text').text('(Click to expand)');
+      }
+    });
+    // end expand/collapse
+    
+    $('#surveytable input').focus(function() {
+        $("#surveytable tr.selectedRow").removeClass("selectedRow");
+        $(document.activeElement).closest("tr").addClass("selectedRow");
+    });
+        
+    $(document).keyup(function(e) {
+        //alert(e.keyCode)
+        switch (e.keyCode)
+        {                                         
+            case 65://a = yes
+                {
+                    activateRadioBtnAndNextRow("yes");
+                    break;
+                };
+            case 83://s = uncertain
+                {
+                    activateRadioBtnAndNextRow("uncertain");
+                    //$("#surveytable tr.selectedRow").find(":radio[value=uncertain]").prop("checked", true);
+                    break;
+                };
+            case 68://d = no
+                {
+                    activateRadioBtnAndNextRow("no");
+                    //$("#surveytable tr.selectedRow").find(":radio[value=no]").prop("checked", true);
+                    break;
+                };
+        }
+    });
+  });
+</script><!-- CLose internal javascript -->
+<input type="submit" id="submitButton" class="btn btn-primary" value="Submit">
+</form>
+
+  </body>
+</html>

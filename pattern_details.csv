@@ -1,0 +1,59 @@
+ID,Pattern,#Tuples found,Type,Source
+p1,NPi and other NPc,45900092,compact,Hearst
+p2,NPc especially NPi,20872227,compact,Hearst
+p3a,NPc including NPi,80640885,compact,Hearst
+p4,NPi or other NPc,13392348,compact,Hearst
+p5,NPc such as NPi,70337543,compact,Hearst
+p6,NPi and any other NPc,975735,compact,Dominic
+p7,NPi and some other NPc,296524,compact,Dominic
+p8a,NPi is a NPc,187644160,compact,Ponzetto
+p8b,NPi was a NPc,39585428,compact,Ponzetto
+p8c,NPi are a NPc,15141131,compact,Ponzetto
+p8d,NPi were a NPc,3206238,compact,Ponzetto
+p10,Such NPc as Npi,5755389,split,Hearst
+p11,NPi like other NPc ,402388,compact,Ponzetto
+p12a,"NPi, one of the NPc",4200376,compact,Ponzetto
+p12b,"NPi, one of these NPc",53235,compact,Ponzetto
+p12c,"NPi, one of those NPc",99241,compact,Ponzetto
+p13,Examples of NPc is Npi,267021,split ,Orna-Montesinos
+p14,Examples of NPc are Npi,267764,split,Orna-Montesinos
+p15a,NPi are examples of NPc,2205089,compact,Orna-Montesinos
+p15b,NPi is example of NPc,292706,compact,Orna-Montesinos
+p16,NPc for example Npi,2356522,compact,Orna-Montesinos
+p20a,Npi is adj_sup NPc,6150245,compact,Orna-Montesinos
+p20b,Npi are adj_sup NPc,1393484,compact,Orna-Montesinos
+p20c,Npi is adj_sup_most NPc,2286478,compact,Orna-Montesinos
+p20d,Npi are adj_sup_most NPc,860770,compact,Orna-Montesinos
+p21a,Adj_sup Npc is Npi,10360953,split,Orna-Montesinos
+p21b,Adj_sup_most Npc are Npi,3755893,split,Orna-Montesinos
+p21c,Adj_sup Npc is Npi,2999877,split,Orna-Montesinos
+p21d,Adj_sup_most Npc are Npi,2357968,split,Orna-Montesinos
+p22a,Npi which is called NPc,119317,compact,Ando
+p22b,Npi which is named NPc,19122,compact,Ando
+p23a,NPc mainly Npi,4792792,compact,Ando
+p23b,NPc mostly Npi,8383063,compact,Ando
+p23c,NPc notably Npi,1154745,compact,Ando
+p23d,NPc particularly Npi,11656254,compact,Ando
+p23e,NPc principally Npi,455578,compact,Ando
+p24,NPc in particular Npi,2354596,compact,Klaussner
+p25,NPc except Npi,9648662,compact,Klaussner
+p26,NPc other than Npi,7175087,compact,Klaussner
+p27a,NPc e.g. Npi,1973022,compact,Klaussner
+p27b,NPc i.e. Npi,2114793,compact,Klaussner
+p28a,"NPi, a kind of NPc",1452822,compact,Klaussner
+p28b,"NPi,  kinds of NPc",4618873,compact,Klaussner
+p28c,"NPi, a form of NPc",1127173,compact,Klaussner
+p28d,"NPi, forms of NPc",3326957,compact,Klaussner
+p29a,Npi which look like NPc,68945,compact,Ando
+p29c,Npi which sound like NPc,32730,compact,Ando
+p30a,NPc which are similar to Npi,17304,compact,Klaussner
+p30b,NPc which is similar to Npi,63713,compact,Klaussner
+p31a,NPc example of this is Npi,14237,compact,Orna-Montesinos
+p31b,NPc examples of this are Npi,1515,compact,Orna-Montesinos
+p34,NPc types Npi,11080276,compact,Orna-Montesinos
+p36,Npc wheter Npi or,2800349,split,Orna-Montesinos
+p37,Compare Npi with NPc,340636,split,Orna-Montesinos
+p38,NPc compared to Npi,346525,compact,Orna-Montesinos
+p39,NPc among them Npi,524784,compact,Orna-Montesinos
+p42,Npi or the many NPc,15192,compact,Orna-Montesinos
+p43,Npi sort of NPc,7884398,compact,Orna-Montesinos

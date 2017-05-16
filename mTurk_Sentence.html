@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel</title>
+  </head>
+  <body>
+
+
+
+<form name="mturk_form" method="post" id="mturk_form" action="http://localhost:8000/">
+
+
+
+<!-- HIT template: Survey-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="Survey"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Survey Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="panel-body" id="instructionBody">
+<p>Hello, <br/>
+thank you for participating in our survey.<br/>
+All in all there are 10 sentences with two highlighted phrases/words.</br>
+Your task is to find for each phrase corresponding english wikipedia pages and categories if existent (if not please type 'not:possible').</br>
+All wikipedia pages have to start with "https://en.wikipedia.org/wiki/" and all categories with "https://en.wikipedia.org/wiki/Category:". Please check it.</br>
+</br>
+As an example:</br>
+<p><strong>Android</strong> is an <strong>operating system</strong>.</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label for="${id_0}_instance_page" class="control-label">Android</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" value="https://en.wikipedia.org/wiki/Android_(operating_system)" readonly></div>
+    <div class="col-sm-5"><input type="url" class="form-control" value="https://en.wikipedia.org/wiki/Category:Android_(operating_system)" readonly></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label for="${id_0}_class_page" class="control-label">operating system</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" value="https://en.wikipedia.org/wiki/Operating_system" readonly></div>
+    <div class="col-sm-5"><input type="url" class="form-control" value="https://en.wikipedia.org/wiki/Category:Operating_systems" readonly></div>
+  </div>
+</div>
+</br>
+<ol>
+<li>
+You should search for <strong>android</strong> as a wikipedia page. 
+If you found it, copy the URI/link into the corresponding text input.
+To copy the URI, left click on the link and choose "copy link address" or similar. You can also open the page and copy+paste from the adress bar at the top of the browser.
+</li>
+<li>
+Search for the category page of <strong>android</strong>.
+The <a href="https://en.wikipedia.org/w/index.php?title=Special:Search">wikipedia search engine</a> also allows to restrict the search to categories in the advanced tab.
+The corresponding categories to a wikipedia page is always at the bottom of the page.
+</li>
+<li>
+Afterwards apply the same for <strong>operating system</strong>.
+</li>
+</ol>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- End Instructions --><!-- Survey Layout -->
+<div class="row" id="workContent">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-default">
+<div class="panel-body">
+
+<ol>
+
+<li>
+<p>${sentence_0}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_0_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_0}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_0}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_0_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_0}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_0}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_1}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_1_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_1}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_1}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_1_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_1}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_1}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_2}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_2_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_2}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_2}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_2_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_2}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_2}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_3}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_3_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_3}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_3}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_3_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_3}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_3}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_4}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_4_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_4}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_4}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_4_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_4}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_4}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_5}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_5_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_5}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_5}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_5_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_5}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_5}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_6}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_6_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_6}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_6}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_6_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_6}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_6}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_7}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_7_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_7}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_7}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_7_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_7}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_7}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_8}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_8_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_8}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_8}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_8_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_8}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_8}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+<li>
+<p>${sentence_9}</p>
+<div class="form-horizontal">
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_9_instance}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_9}_instance_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_9}_instance_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-2"><label class="control-label">${label_9_class}</label></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_9}_class_page" placeholder="English Wikipedia page URL or 'not:possible'" required></div>
+    <div class="col-sm-5"><input type="url" class="form-control" name="${id_9}_class_category" placeholder="English Wikipedia category URL or 'not:possible'" required></div>
+  </div>
+</div>
+</li>
+
+</ol>
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- End Survey Layout --></section>
+<!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" /><!-- Open internal style sheet -->
+
+<style type="text/css">
+#collapseTrigger{
+  color:#fff;
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+.form-horizontal .control-label{
+  text-align: left
+}
+
+</style>
+<!-- Close internal style sheet -->
+
+<!-- External JS references -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Open internal javascript --><script>
+  $(document).ready(function() {
+    // Instructions expand/collapse
+    var content = $('#instructionBody');
+    var trigger = $('#collapseTrigger');
+    content.hide();
+    $('.collapse-text').text('(Click to expand)');
+    trigger.click(function(){
+      content.toggle();
+      var isVisible = content.is(':visible');
+      if(isVisible){
+        $('.collapse-text').text('(Click to collapse)');
+      }else{
+        $('.collapse-text').text('(Click to expand)');
+      }
+    });
+    // end expand/collapse
+  });
+
+</script><!-- CLose internal javascript -->
+<input type="submit" id="submitButton" class="btn btn-primary" value="Submit">
+</form>
+
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<?vsp
+    --https://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtRDFDumpNQuad
+    --http://code.metager.de/source/xref/openlink/virtuoso-opensource/libsrc/Wi/rdfbox.c
+    http_header (concat (http_header_get (), 'Content-type: application/n-quads; charset=UTF-8\r\n'));
+    declare res_uri,res_rdf_node any;
+    res_uri := get_keyword('res', params, 'no value');
+    res_rdf_node := DB.DBA.RDF_MAKE_IID_OF_QNAME_SAFE (res_uri);
+    
+    DECLARE  ses_len INT; 
+    DECLARE  env, ses ANY;
+    
+    SET isolation = 'uncommitted';
+    env := vector (0,0,0);
+    ses := string_output (10000000);
+    
+    for (select S,P,O,G from DB.DBA.RDF_QUAD where S = res_rdf_node or O = res_rdf_node) do{   
+        DECLARE EXIT HANDLER FOR SQLSTATE '22023' 
+        {
+            GOTO next;
+        };
+        http_nquad (env, "s", "p", "o", "g", ses);
+        
+        ses_len := LENGTH (ses);
+        IF (ses_len >= 100000000)
+        {
+            http(string_output_string(ses));
+            env := vector (0,0,0);
+            ses := string_output (10000000);
+        }
+        next:;
+    }
+    IF (length (ses))
+    {
+        http(string_output_string(ses));
+        env := vector (0,0,0);
+    }
+?>   

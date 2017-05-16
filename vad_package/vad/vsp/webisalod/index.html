@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html><head><title>WebIsaDB LOD</title>
+<link rel="stylesheet" href="http://webdatacommons.org/style.css" type="text/css" media="screen"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30248817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<style>
+.tar {
+text-align: right;
+}
+.rtable 
+{
+    float: right; 
+    padding-left:10px;
+        
+}
+.smalltable, .smalltable TD, .smalltable TH 
+{
+font-size:9pt; 
+}
+.table-wrapper {
+  position:relative;
+}
+.table-scroll {
+  height:240px;
+  overflow:auto;  
+  margin-top:-10px;
+}
+
+</style>
+
+
+</head>
+<body> 
+
+ <div id="logo" style="text-align:right; background-color: white;">&nbsp;&nbsp;<a href="http://dws.informatik.uni-mannheim.de"><img src="http://webdatacommons.org/images/ma-logo.gif" alt="University of Mannheim - Logo"></a></div>
+
+<div id="header">
+<h1 style="font-size: 250%;">Web Data Commons - WebIsALOD</h1>
+</div>
+
+<div id="tagline">Generating a Linked Open Data version of the <a href="http://webdatacommons.org/isadb/">IsA database</a></div>
+
+<div id="content">
+<p>
+Hypernymy relations are an important asset in many applications,and a central ingredient to Semantic Web ontologies. 
+The <a href="http://webdatacommons.org/isadb/">IsA database</a> is a large collection of such hypernymy relations extracted from the <a href="http://commoncrawl.org">Common Crawl</a>. 
+In this paper, we introduce WebIsALOD, a Linked Open Data version of the IsA database, containing 11.7M hyernymy relations, each provided with rich provenance information.
+As the original dataset contained more than 80% wrong, noisy extractions, we run a machine learning algorithm to assign confdence scores to the individual statements.
+</p>
+
+<h2 id="enpoint">Just Browsing</h2>
+<p>To browse the LOD enpoint you can just start with the concept <a href='/concept/iphone_4_'>IPhone 4</a></p>
+
+<h2 id="enpoint">SPARQL Endpoint</h2>
+<p>The SPARQL Enpoint is available at <a href='/sparql'>/sparql</a>.
+Try out this query which retrives all relations which has a higher confidence than 0.70:
+<pre>
+<code>
+SELECT ?hypernymLabel ?hyponymLabel ?confidence
+WHERE{
+    GRAPH ?g {
+        ?hypernym skos:broader ?hyponym.
+    }
+    ?hypernym rdfs:label ?hypernymLabel.
+    ?hyponym rdfs:label ?hyponymLabel.
+    ?g &lt;http://webisa.webdatacommons.org/ontology#hasConfidence&gt; ?confidence.
+    FILTER (?confidence > 0.70)
+}
+</code>
+</pre>
+Or retrive all broader concepts for a specific resource ordered by the confidence:
+<pre>
+<code>
+PREFIX isa: &lt;http://webisa.webdatacommons.org/concept/&gt;
+PREFIX isaont: &lt;http://webisa.webdatacommons.org/ontology#&gt; 
+SELECT ?hypernymLabel ?hyponymLabel ?confidence
+WHERE{
+    GRAPH ?g {
+        isa:iphone_4_ skos:broader ?hyponym.
+    }
+    isa:iphone_4_ rdfs:label ?hypernymLabel.
+    ?hyponym rdfs:label ?hyponymLabel.
+    ?g isaont:hasConfidence ?confidence.
+}
+ORDER BY DESC(?confidence)
+</code>
+</pre>
+</p>
+
+<h2 id="enpoint">Dumps</h2>
+<p>Links to the dumps of the dataset (gzipped n-quads): 
+<ul>
+<li><a href='http://data.dws.informatik.uni-mannheim.de/webisa/webisalod-instances.nq.gz'>all instances</a></li>
+<li><a href='http://data.dws.informatik.uni-mannheim.de/webisa/webisalod-ontology.nq.gz'>ontology</a></li>
+</ul>
+</p>
+
+<h2 id="enpoint">Code repository</h2>
+<p>The code repository with all results is hosted at github: <a href='https://github.com/sven-h/webisalod'>sven-h/webisalod</a>
+</p>
+
+<h2 id="enpoint">Content negotiation</h2>
+<p>Try out the content negotiation by requesting for example the resource IPhone4 with nquad or csv:
+<pre>
+<code>
+curl -v -H "Accept: application/n-quads" http://webisa.webdatacommons.org/concept/iphone_4_
+curl -v -H "Accept: text/csv" http://webisa.webdatacommons.org/concept/iphone_4_
+</code>
+</pre>
+</p>
+
+</div>
+</body>
+</html> 
